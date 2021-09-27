@@ -1,0 +1,11 @@
+.navbar{
+  background-color: cornsilk;
+}
+.nav-link{
+  color:#ff0000;
+  font: 20px sans-serif;
+  margin-top:10px
+}
+.navbar-nav{
+    margin-left: 5px;
+}

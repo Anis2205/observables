@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Activateservice } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'observables';
+  activated  = false
+  mysubsciption : Subscription | undefined
+  constructor(private userservice : Activateservice){
+  }
+
+  ngOnInit(): void {
+    this. mysubsciption = this.userservice.activeemitter.subscribe(
+      capturing => {
+        this.activated = capturing
+      }
+    )
+  }
+  ngOnDestroy():void {
+    this.mysubsciption?.unsubscribe()
+    
+  }
 }
